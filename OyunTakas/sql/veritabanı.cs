@@ -21,7 +21,7 @@ namespace sql
         static SqlDataAdapter da;
         static System.Data.DataSet ds;
         static SqlDataReader dr;
-        public static string sqlcon = @"Data Source=DESKTOP-7VFJQRM\SQLEXPRESS;Initial Catalog=202503212;Integrated Security=True";
+        public static string sqlcon = @"Data Source=DESKTOP-29DEF0K\SQLEXPRESS;Initial Catalog=202503212;Integrated Security=True";
         // DESKTOP-7VFJQRM kısmını sadece buradan düzetmeniz yeterli
         public static bool Baglantidurumu()
         {

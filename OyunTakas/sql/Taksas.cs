@@ -18,7 +18,8 @@ namespace sql
         SqlCommand cmd;
         DataSet ds;
         SqlDataReader dr;
-        
+        SqlDataReader dr2;
+
         public static string a, b;
         public double z;
         public double x;
@@ -31,47 +32,40 @@ namespace sql
 
         private void Taksas_Load(object sender, EventArgs e)
         {
-            
-             // TODO: Bu kod satırı '_202503212DataSet1.alıştakas' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            this.alıştakasTableAdapter.Fill(this._202503212DataSet1.alıştakas);
-            // TODO: Bu kod satırı '_202503212DataSet1.sattakas' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            this.sattakasTableAdapter.Fill(this._202503212DataSet1.sattakas);
 
+            con = new SqlConnection(veritabanı.sqlcon);
+            con.Open();
+            cmd = new SqlCommand("select * from sattakas",con);
+            da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+            da.Fill(dt2);
+            da.Fill(dt);
+            comboBox1.ValueMember = "Tfiyat";
+            comboBox1.DisplayMember = "Tad";
+            comboBox1.DataSource = dt;
 
+            comboBox2.ValueMember = "Talışfiyat";
+            comboBox2.DisplayMember = "Tad";
+            comboBox2.DataSource = dt2;
 
-           
-            
+            con.Close();
+       
         }
         
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
            
-            if (comboBox1.SelectedValue != null && comboBox2.SelectedValue != null )
-            {
-             
-                checkedListBox1.Items.Add(comboBox1.Text);
-
-                
-                
-                label3.Text = comboBox1.SelectedValue.ToString();
-                label4.Text = comboBox2.SelectedValue.ToString();
-                
-            }
+        
            
-            
+
+
         }
 
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
           
-            if (comboBox1.SelectedValue != null && comboBox2.SelectedValue != null)
-            {
-                checkedListBox2.Items.Add(comboBox2.Text);
-                 label3.Text = comboBox1.SelectedValue.ToString();
-                 label4.Text = comboBox2.SelectedValue.ToString();
-                
-                
-            }
+        
           
         }
 
@@ -125,24 +119,31 @@ namespace sql
             for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
             {
 
-                string sorgu = "select Tfiyat from sattakas where Tad ='" + checkedListBox1.CheckedItems[i] + "'";
-                da = new SqlDataAdapter(sorgu, con);
-                ds = new DataSet();
-                da.Fill(ds, "sattakas");
-                dataGridView1.DataSource = ds.Tables["sattakas"];
-                z += Convert.ToDouble(dataGridView1.Rows[0].Cells[0].Value);
+               string sorgu = "select Tfiyat from sattakas where Tad ='" + checkedListBox1.CheckedItems[i] + "'";
+               cmd = new SqlCommand(sorgu,con);
+               dr = cmd.ExecuteReader();
+               if (dr.Read())
+                {
+                    z += Convert.ToDouble(dr["Tfiyat"]);
+                }
+                
+               
 
 
             }
+            dr.Close();
+            
             for (int i = 0; i < checkedListBox2.CheckedItems.Count; i++)
             {
 
-                string sorgu = "select Tfiyat from alıştakas where Tad ='" + checkedListBox2.CheckedItems[i] + "'";
-                da = new SqlDataAdapter(sorgu, con);
-                ds = new DataSet();
-                da.Fill(ds, "sattakas");
-                dataGridView1.DataSource = ds.Tables["sattakas"];
-                x += Convert.ToDouble(dataGridView1.Rows[0].Cells[0].Value);
+                string sorgu = "select Talışfiyat from sattakas where Tad ='" + checkedListBox2.CheckedItems[i] + "'";
+                cmd = new SqlCommand(sorgu, con);
+                dr2 = cmd.ExecuteReader();
+                if (dr2.Read())
+                {
+                    x += Convert.ToDouble(dr2["Talışfiyat"]);
+                }
+                
 
 
             }
@@ -203,6 +204,40 @@ namespace sql
             this.Hide();
             geçmiş g = new geçmiş();
             g.ShowDialog();
+        }
+
+       
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue != null && comboBox2.SelectedValue != null)
+            {
+                checkedListBox1.Items.Add(comboBox1.Text);
+
+
+
+                label3.Text = comboBox1.SelectedValue.ToString();
+                label4.Text = comboBox2.SelectedValue.ToString();
+
+
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedValue != null && comboBox2.SelectedValue != null)
+            {
+                checkedListBox2.Items.Add(comboBox2.Text);
+                label3.Text = comboBox1.SelectedValue.ToString();
+                label4.Text = comboBox2.SelectedValue.ToString();
+
+
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void şifreDeğiştirToolStripMenuItem_Click(object sender, EventArgs e)
