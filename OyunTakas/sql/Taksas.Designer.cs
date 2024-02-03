@@ -45,11 +45,9 @@ namespace sql
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -157,7 +155,7 @@ namespace sql
             this.checkedListBox1.Items.AddRange(new object[] {
             "seçiniz"});
             this.checkedListBox1.Location = new System.Drawing.Point(26, 173);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(141, 124);
             this.checkedListBox1.TabIndex = 10;
@@ -169,7 +167,7 @@ namespace sql
             this.checkedListBox2.Items.AddRange(new object[] {
             "seçiniz"});
             this.checkedListBox2.Location = new System.Drawing.Point(349, 173);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(145, 124);
             this.checkedListBox2.TabIndex = 11;
@@ -177,7 +175,7 @@ namespace sql
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(44, 347);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 24);
             this.button2.TabIndex = 12;
@@ -188,7 +186,7 @@ namespace sql
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(403, 347);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 24);
             this.button3.TabIndex = 13;
@@ -199,7 +197,7 @@ namespace sql
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(220, 196);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 19);
             this.button4.TabIndex = 14;
@@ -217,16 +215,6 @@ namespace sql
             this.label6.Size = new System.Drawing.Size(25, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "------";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(604, 63);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(309, 308);
-            this.dataGridView1.TabIndex = 18;
-            this.dataGridView1.Visible = false;
             // 
             // comboBox1
             // 
@@ -253,7 +241,6 @@ namespace sql
             this.ClientSize = new System.Drawing.Size(566, 401);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -268,13 +255,12 @@ namespace sql
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Taksas";
             this.Text = "Taksas";
             this.Load += new System.EventHandler(this.Taksas_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,7 +282,6 @@ namespace sql
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem ilanlardanAlışverişToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem geçmişToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
